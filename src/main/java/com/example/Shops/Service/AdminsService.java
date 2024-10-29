@@ -21,70 +21,63 @@ public class AdminsService {
     public MenusRepository menusRepository;
 
 
-    public void addRestaurant(Restaurants restaurants) {
-        Restaurants restaurant = new Restaurants();
-        restaurant.setName(restaurants.getName());
-        restaurant.setDescription(restaurants.getDescription());
-        restaurant.setLocation(restaurants.getLocation());
-        restaurant.setCreatedDate(new Date());
-        restaurantsRepository.save(restaurant);
-    }
 
-    public String deleteRestaurant(Long id) {
-        Optional<Restaurants> restaurant = restaurantsRepository.findById(id);
-        restaurantsRepository.deleteById(id);
-        return restaurant.get().getName();
 
-    }
-
-    public String updateRestaurant(Long id, Restaurants restaurants) {
-        Optional<Restaurants> oldRestaurant = Optional.ofNullable(restaurantsRepository.findById
-                (id).orElseThrow(() -> new NoSuchElementException("Restaurant not found with ID: " + restaurants.getRestaurantId())));
-        ;
-
-        if (restaurants.getName() != null) {
-            oldRestaurant.get().setName(restaurants.getName());
-        }
-        if (restaurants.getDescription() != null) {
-            oldRestaurant.get().setDescription(restaurants.getDescription());
-        }
-        if (restaurants.getLocation() != null) {
-            oldRestaurant.get().setLocation(restaurants.getLocation());
-        }
-        oldRestaurant.get().setCreatedDate(new Date());
-
-        restaurantsRepository.save(oldRestaurant.get());
-        return oldRestaurant.get().getName();
-    }
-
-    public List<Restaurants> findAllRestaurants() {
-        return restaurantsRepository.findAll();
-    }
-///////////////////////// MENUS ////////////////////////////////////////////////
-
-    //    public void addMenu(Menus newMenu) {
-//        Menus oldMenu = new Menus();
-//        oldMenu.setRestaurant(newMenu.getRestaurant());
-//        oldMenu.setName(newMenu.getName());
-//        oldMenu.setDescription(newMenu.getDescription());
-//        oldMenu.setPrice(newMenu.getPrice());
-//        oldMenu.setCreatedDate(new Date());
-//        menusRepository.save(oldMenu);
+//    public void addRestaurant(Restaurants restaurants) {
+//        Restaurants restaurant = new Restaurants();
+//        restaurant.setName(restaurants.getName());
+//        restaurant.setDescription(restaurants.getDescription());
+//        restaurant.setLocation(restaurants.getLocation());
+//        restaurant.setCreatedDate(new Date());
+//        restaurantsRepository.save(restaurant);
 //    }
-//    public Menus addMenu(Menus menu) {
-//        menu.setCreatedDate(new Date());
-//        return menusRepository.save(menu);
+//
+//    public String deleteRestaurant(Long id) {
+//        Optional<Restaurants> restaurant = restaurantsRepository.findById(id);
+//        restaurantsRepository.deleteById(id);
+//        return restaurant.get().getName();
+//
+//    }
+//
+//    public String updateRestaurant(Long id, Restaurants restaurants) {
+//        Optional<Restaurants> oldRestaurant = Optional.ofNullable(restaurantsRepository.findById
+//                (id).orElseThrow(() -> new NoSuchElementException("Restaurant not found with ID: " + restaurants.getRestaurantId())));
+//        ;
+//
+//        if (restaurants.getName() != null) {
+//            oldRestaurant.get().setName(restaurants.getName());
+//        }
+//        if (restaurants.getDescription() != null) {
+//            oldRestaurant.get().setDescription(restaurants.getDescription());
+//        }
+//        if (restaurants.getLocation() != null) {
+//            oldRestaurant.get().setLocation(restaurants.getLocation());
+//        }
+//        oldRestaurant.get().setCreatedDate(new Date());
+//
+//        restaurantsRepository.save(oldRestaurant.get());
+//        return oldRestaurant.get().getName();
+//    }
+//
+//    public List<Restaurants> findAllRestaurants() {
+//        return restaurantsRepository.findAll();
+//    }
+//    public Restaurants findRestaurantById(Long id) {
+//        return restaurantsRepository.findById(id).orElseThrow(()
+//                -> new NoSuchElementException("Restaurant not found with ID: " + id));
 //    }
 
+    /////////////////////////////////////////////////////////////////
+//    public String deleteMenu(Long id) {
+//        Optional<Menus> menu = menusRepository.findById(id);
+//        menusRepository.deleteById(id);
+//        return menu.get().getName();
+//    }
+//
+//    public List<Menus> findAllMenus() {
+//       return menusRepository.findAll();
+//    }
 
-    public String deleteMenu(Long id) {
-        Optional<Menus> menu = menusRepository.findById(id);
-        menusRepository.deleteById(id);
-        return menu.get().getName();
-    }
 
-    public List<Menus> findAllMenus() {
-       return menusRepository.findAll();
-    }
 }
 

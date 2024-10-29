@@ -20,8 +20,8 @@ public class Menus {
     private Long menuID;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "restaurant_id")
     @JsonManagedReference
+    @JoinColumn(name = "restaurant_id")
     private Restaurants restaurant;
 
     private String Name;
