@@ -28,6 +28,7 @@ public class Restaurants {
     private List<Orders> orders; // One restaurant can have many orders
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<Menus> menus;
 
 
